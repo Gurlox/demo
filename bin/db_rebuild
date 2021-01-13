@@ -1,0 +1,5 @@
+YELLOW='\033[1;33m'
+NC='\033[0m' # no color
+
+echo -e "${YELLOW}Rebuilding api database...${NC}"
+docker exec api_php sh -c 'composer dev-db-rebuild'

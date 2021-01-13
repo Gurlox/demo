@@ -1,0 +1,13 @@
+registration:
+    email_not_blank: 'Adres email nie może być pusty'
+    repeat_type_error: 'Hasła muszą być takie same'
+    email: 'Niepoprawny adres email'
+    email_max_length: 'Adres email jest zbyt długi'
+    unique_email: 'Istnieje już użytkownik o takim adresie email'
+    password_min_length: 'Hasło powinno mieć przynajmniej {{ limit }} znaków'
+    password_max_length: 'Hasło może mieć maksymalnie {{ limit }} znaków'
+    password_not_blank: 'Hasło nie może być puste'
+create_project:
+    name_not_blank: 'Nazwa projektu nie może być pusta'
+    name_min_length: 'Nazwa projektu powinna mieć przynajmniej {{ limit }} znaków'
+    name_max_length: 'Nazwa projektu powinna mieć maksymalnie {{ limit }} znaków'

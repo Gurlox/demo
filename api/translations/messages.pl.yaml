@@ -1,0 +1,9 @@
+exception:
+    default: 'Wystąpił nieoczekiwany błąd'
+    token:
+        format: 'Niepoprawny token'
+    item_not_found: 'Podany element nie istnieje dla danego modułu'
+    item_data_not_found: 'Podany element nie ma ustawionego pola z danymi'
+    move_module:
+        out_of_range: 'Nie możesz przesunąć tego elementu w tą stronę'
+        invalid_argument: 'Niepoprawna wartość argumentu'

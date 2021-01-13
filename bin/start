@@ -1,0 +1,4 @@
+cd ./api
+
+# build docker
+docker-compose up -d

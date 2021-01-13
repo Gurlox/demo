@@ -1,0 +1,40 @@
+version: '3'
+services:
+    php:
+        build: docker
+        container_name: api_php
+        expose:
+            - '9000'
+        depends_on:
+            - fjuu_mysql
+        volumes:
+            - ./:/var/www/html
+
+    nginx:
+        image: nginx:1.13.8
+        container_name: api_nginx
+        ports:
+            - 80:80
+        volumes:
+            - ./:/var/www/html
+            - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - fjuu_php
+
+    mysql:
+        image: mysql:5.7.25
+        container_name: api_mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${DB_NAME}
+            - MYSQL_USER=${DB_USER}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+
+    mysql_test:
+        image: mysql:5.7.25
+        container_name: api_mysql_test
+        environment:
+            - MYSQL_ROOT_PASSWORD=${TEST_DB_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${TEST_DB_NAME}
+            - MYSQL_USER=${TEST_DB_USER}
+            - MYSQL_PASSWORD=${TEST_DB_PASSWORD}

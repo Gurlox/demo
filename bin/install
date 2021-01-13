@@ -1,0 +1,27 @@
+CYAN='\033[0;36m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # no color
+
+# API
+echo -e "${YELLOW}Installing backend...${NC}"
+cd ../api
+
+# build docker
+docker-compose build
+docker-compose up -d
+
+# generate JWT tokens
+openssl genrsa -out config/jwt/private.pem -passout pass:secret -aes256 4096
+openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem -passin pass:secret
+
+# install composer modules and rebuild database
+docker exec api_php sh -c 'composer dev-start'
+
+# FRONTEND
+echo -e "${YELLOW}Installing frontend...${NC}"
+cd ../front
+npm install
+
+echo ""
+echo -e "Backend docs available at ${CYAN}http://localhost/public/api/doc${NC}"
+echo -e "Run ${CYAN}npm run serve${NC} inside front directory to run project"

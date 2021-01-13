@@ -1,0 +1,20 @@
+app.swagger_ui:
+    path: /public/api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+security_login:
+    path: /auth/login
+    controller: App\Controller\SecurityController:loginAction
+    methods: [POST]
+security_refresh_token:
+    path: /auth/refresh
+    controller: App\Controller\SecurityController:refreshTokenAction
+    methods: [GET]
+users:
+    resource: App\Controller\UsersController
+projects:
+    resource: App\Controller\ProjectsController
+modules:
+    resource: App\Controller\ModulesController
+items:
+    resource: App\Controller\ItemsController
